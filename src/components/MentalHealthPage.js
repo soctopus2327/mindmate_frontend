@@ -26,7 +26,7 @@ const MentalHealthPage = () => {
 
   const getChatbotResponse = async (message) => {
     try {
-      const res = await fetch('http://localhost:8000/api/chatbot', {
+      const res = await fetch('https://mindmate-backend-sooty.vercel.app/api/chatbot', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message }),
