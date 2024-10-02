@@ -12,7 +12,9 @@ const Header = () => {
         <li><Link className="text-white hover:underline" to="/medication">Medication</Link></li>
         <li><Link className="text-white hover:underline" to="/contact">Contact</Link></li>
         <li><Link className="text-white hover:underline" to="/mental-health">Health Chatbot</Link></li>
-        <li><Link className="text-white hover:underline" to="/daily-question">Daily Question</Link></li>
+        <li><Link className="text-white hover:underline" to="/daily-question">Daily Journal</Link></li>
+        <li><Link className="text-white hover:underline" to="/emotion-tracker">EmotionTracker</Link></li>
+        <li><Link className="text-white hover:underline" to="/sign-in">SignIn</Link></li>
       </ul>
     </nav>
   );

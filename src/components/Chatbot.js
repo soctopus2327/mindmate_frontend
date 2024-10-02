@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+// src/components/Chatbot.js
+import React, { useState, useEffect } from 'react';
+import { auth, db } from '../firebase/firebaseConfig'; // Update this path
+import { addDoc, collection } from 'firebase/firestore';
 
 const Chatbot = () => {
   const [userInput, setUserInput] = useState('');
   const [response, setResponse] = useState('');
-
-  // Function to send message to backend API
+  
   const sendMessage = async (e) => {
     e.preventDefault();
     try {
@@ -14,16 +16,25 @@ const Chatbot = () => {
         body: JSON.stringify({ message: userInput }),
       });
       
-
-      // Parse the response from the backend
       const data = await res.json();
-      setResponse(data.response); // Set the response in the state
-      setUserInput(''); // Clear the input field
+      setResponse(data.response);
+      
+      await addDoc(collection(db, 'users', auth.currentUser.uid, 'conversations'), {
+        userMessage: userInput,
+        botResponse: data.response,
+        timestamp: new Date(),
+      });
+
+      setUserInput('');
     } catch (error) {
       console.error('Error:', error);
       setResponse('Something went wrong. Please try again.');
     }
   };
+
+  useEffect(() => {
+    // Optionally, you can load previous conversations here
+  }, []);
 
   return (
     <div className="p-4">
@@ -41,7 +52,7 @@ const Chatbot = () => {
       </form>
       <div className="border p-2">
         <h2 className="font-bold">Response:</h2>
-        <p>{response}</p> {/* Display the response */}
+        <p>{response}</p>
       </div>
     </div>
   );
