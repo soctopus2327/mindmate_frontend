@@ -3,7 +3,7 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-    apiKey: process.env.FIREBASE_API_KEY,
+    apiKey: "AIzaSyBg0vi8c2yUDOJgQLOhkISzQS3gfrxXfiU",
     authDomain: "emotion-detector-95a5c.firebaseapp.com",
     projectId: "emotion-detector-95a5c",
     storageBucket: "emotion-detector-95a5c.appspot.com",
